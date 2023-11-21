@@ -41,33 +41,35 @@ export const SubscribeForm = () => {
 	};
 	return (
 		<>
+		<div className="w-full">
 			{!status && (
-				<div className="relative w-full rounded-full bg-white p-2 dark:bg-neutral-950">
+				<div className="relative rounded-full p-2">
 					<input
 						ref={inputRef}
 						type="email"
-						placeholder="john@doe.com"
-						className="focus:outline-primary-600 dark:focus:outline-primary-500 left-3 top-3 w-full rounded-full p-3 text-base text-black outline-none dark:bg-neutral-950 dark:text-neutral-50"
+						placeholder="hal@finney.com"
+						className="focus:outline-fuxia left-3 top-3 rounded-full  w-full border p-3 text-base text-black dark:bg-zinc-200"
 					/>
 					<button
 						disabled={requestInProgress}
 						onClick={subscribe}
-						className="bg-primary-600 dark:bg-primary-600 absolute right-3 top-3 rounded-full px-3 py-2 text-white disabled:cursor-not-allowed disabled:opacity-80"
+						className="bg-fuxia dark:bg-fuxia absolute right-3 top-3 uppercase rounded-full px-3 py-2 text-white disabled:cursor-not-allowed disabled:opacity-80"
 					>
-						Subscribe
+						subscribe
 					</button>
 				</div>
 			)}
 			{status === 'PENDING' && (
-				<div className="relative w-full p-2 text-center">
+				<div className="relative p-2 text-center">
 					<p className="font-bold text-green-600 dark:text-green-500">Almost there!</p>
-					<p className="font-medium text-slate-600 dark:text-neutral-300">
+					<p className="font-medium mt-2 text-slate-600 dark:text-neutral-300">
 						Check your inbox for a confirmation email and click{' '}
-						<strong>&quot;Confirm and Subscribe&quot;</strong> to complete your subscription. Thanks
-						for joining us!
+						<strong>&quot;Confirm and Subscribe&quot;</strong> to complete your subscription.
+						<p>Thanks for joining us! </p>
 					</p>
 				</div>
 			)}
+			</div>
 		</>
 	);
 };

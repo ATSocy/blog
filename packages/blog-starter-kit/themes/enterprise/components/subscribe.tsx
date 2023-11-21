@@ -9,7 +9,7 @@ export const Subscribe = () => {
 			<Popover.Root>
 				<Popover.Trigger asChild>
 					<Button
-						label="Subscribe"
+						label="sub"
 						type="outline"
 						icon={<NewsletterPlusSVG className="w-5 h-5 fill-current" />}
 						className="!bg-white dark:!bg-neutral-950"
@@ -21,8 +21,8 @@ export const Subscribe = () => {
 						align="end"
 						sideOffset={5}
 					>
-						<h3 className="mb-2 text-base font-semibold text-center text-primary-600">
-							Subscribe to our newsletter for updates and changelog.
+						<h3 className="mb-2 text-base font-semibold text-center dark:text-slate-50">
+							Stay in the loop. Receive free alpha.
 						</h3>
 						<SubscribeForm />
 					</Popover.Content>

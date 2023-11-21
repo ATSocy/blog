@@ -7,6 +7,7 @@ import { useAppContext } from './contexts/appContext';
 import CloseSVG from './icons/svgs/CloseSVG';
 import { PublicationLogo } from './publication-logo';
 import { SocialLinks } from './social-links';
+import AtsocySVG from './icons/svgs/AtsocySVG';
 
 type Props = {
 	toggleSidebar: () => void;
@@ -41,12 +42,13 @@ function PublicationSidebar(props: Props) {
 					className={`${
 						// When the sheet is mounted, we want to slide it in from the left.
 						!isMounted ? '-translate-x-96' : 'translate-x-0'
-					} fixed bottom-0 left-0 top-0 z-50 flex w-80 transform flex-col bg-white shadow-2xl duration-300 ease-out dark:border-neutral-800 dark:bg-neutral-950`}
+					} fixed bottom-0 left-0 top-0 z-50 flex w-80 transform flex-col rounded-tr-2xl rounded-br-3xl bg-white shadow-2xl duration-300 ease-out dark:border-neutral-800 dark:bg-neutral-950`}
 				>
 					<div className="blog-sidebar-header w-full shrink-0 py-6">
 						<div className="flex items-center justify-between pl-8 pr-4">
 							<div className="!text-xl">
-								<PublicationLogo isSidebar />
+							<AtsocySVG isSidebar className="dark:fill-neutral-300 fill-black h-[20px] min-h-[20px] w-full" />
+						
 							</div>
 
 							<DialogPrimitive.Close asChild>
@@ -64,9 +66,9 @@ function PublicationSidebar(props: Props) {
 					</div>
 
 					<div className="py-10 pl-8 pr-4">
-						<h2 className="mb-4 text-sm font-semibold uppercase text-slate-500 dark:text-slate-400">
-							Blog menu
-						</h2>
+						{/* <h2 className="mb-4 text-sm font-semibold uppercase text-slate-500 dark:text-slate-400">
+							CATEGORIES
+						</h2> */}
 						<section className="mb-10">
 							<ul className="flex flex-col gap-2 text-slate-700 dark:text-white">
 								<li>

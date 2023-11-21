@@ -6,6 +6,14 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
+				'lime': '#8fff16',
+				'deep': '#060606',
+				'midnight': '#022f35',
+				'frost': '#ecfcfd',
+				'space': '#1A1C3C',
+				'violeta': '#180E2A',
+				'white': '#FFFFFF',
+				'fuxia': '#f92bd1',
 				'accent-1': '#FAFAFA',
 				'accent-2': '#EAEAEA',
 				'accent-7': '#333',

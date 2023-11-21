@@ -18,7 +18,7 @@ export const PublicationLogo = ({ isSidebar }: { isSidebar?: boolean }) => {
 		<h1 className="relative w-full">
 			<Link
 				href={'/'}
-				aria-label={`${publication.title} blog home page`}
+				aria-label={`${publication.title} home page`}
 				className="flex flex-row items-center justify-center gap-3"
 			>
 				{PUBLICATION_LOGO ? (
@@ -28,7 +28,7 @@ export const PublicationLogo = ({ isSidebar }: { isSidebar?: boolean }) => {
 							alt={publication.title}
 							src={resizeImage(PUBLICATION_LOGO, { w: 320, h: 80 })}
 						/>
-						<span className="text-2xl font-semibold text-white md:text-3xl">Blog</span>
+						{/* <span className="text-2xl font-semibold text-white md:text-3xl">Blog</span> */}
 					</>
 				) : (
 					<span

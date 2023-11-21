@@ -29,6 +29,7 @@ import {
 	PublicationFragment,
 } from '../generated/graphql';
 import { DEFAULT_COVER } from '../utils/const';
+import { Announcement } from '../components/announcement';
 
 const SubscribeForm = dynamic(() =>
 	import('../components/subscribe-form').then((mod) => mod.SubscribeForm),
@@ -121,8 +122,10 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 					/>
 				</Head>
 				<Header />
-				<Container className="flex flex-col items-stretch gap-10 px-5 pb-10">
-					<Navbar />
+				<Announcement />
+				<Container className="flex flex-col items-stretch gap-10 px-4 mt-10 lg:px-3 pb-10">
+					{/* <Navbar /> */}
+					
 
 					{allPosts.length === 0 && (
 						<div className="grid grid-cols-1 py-20 lg:grid-cols-3">
@@ -153,15 +156,17 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 					</div>
 
 					{allPosts.length > 0 && (
-						<div className="bg-primary-50 grid grid-cols-4 rounded-lg px-5 py-5 dark:bg-neutral-900 md:py-10">
-							<div className="col-span-full md:col-span-2 md:col-start-2">
-								<h2 className="text-primary-600 dark:text-primary-500 mb-5 text-center text-lg font-semibold">
-									Subscribe to our newsletter for updates and changelog.
-								</h2>
-								<SubscribeForm />
-							</div>
-						</div>
-					)}
+  <div className="bg-zinc-700 bg-opacity-5 border border-space border-opacity-10 md:flex md:flex-row  justify-center rounded-lg lg:px-10 lg:py-10 py-5 px-5 dark:border-zinc-500 dark:border-opacity-20  dark:bg-opacity-40 items-stretch md:px-5 sm:px-3 flex-col gap-3">
+   
+      <h2 className="text-zinc-900 dark:text-zinc-100 flex md:text-lg lg:text-xl xl:text-5xl justify-center items-center grow font-semibold" style={{ flexGrow: 1 }}>
+        Keep up with the Alien Trap Society!
+      </h2>
+      <div className="flex grow items-center  justify-center" style={{ flexGrow: 2 }}>
+        <SubscribeForm />
+      </div>
+    </div>
+
+)}
 
 					{morePosts.length > 0 && (
 						<>

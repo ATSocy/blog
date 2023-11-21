@@ -35,6 +35,7 @@ import { loadIframeResizer } from '@starter-kit/utils/renderer/services/embed';
 // @ts-ignore
 import { triggerCustomWidgetEmbed } from '@starter-kit/utils/trigger-custom-widget-embed';
 import { useEmbeds } from '@starter-kit/utils/renderer/hooks/useEmbeds';
+import { Announcement } from '../components/announcement';
 
 const Subscribe = dynamic(() => import('../components/subscribe').then((mod) => mod.Subscribe));
 const PostComments = dynamic(() =>
@@ -171,6 +172,7 @@ export default function PostOrPage({ publication, post, page }: Props) {
 		<AppProvider publication={publication} post={post}>
 			<Layout>
 				<Header />
+				<Announcement />
 				<Container className="pt-10">
 					<article className="flex flex-col items-start gap-10 pb-10">
 						{post ? Post(publication, post) : Page(page)}

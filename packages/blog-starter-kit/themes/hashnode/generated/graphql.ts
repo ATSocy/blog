@@ -1472,8 +1472,6 @@ export type PublishPostInput = {
   coverImageOptions?: InputMaybe<CoverImageOptionsInput>;
   /** A flag to indicate if the comments are disabled for the post. */
   disableComments?: InputMaybe<Scalars['Boolean']['input']>;
-  /** The ID of the draft to be published. */
-  draftId: Scalars['ObjectId']['input'];
   /** Information about the meta tags added to the post, used for SEO purpose. */
   metaTags?: InputMaybe<MetaTagsInput>;
   /** The URL of the original article if the post is imported from an external source. */
@@ -1732,6 +1730,7 @@ export enum Scope {
   ImportSubscribersToPublication = 'import_subscribers_to_publication',
   PublicationAdmin = 'publication_admin',
   PublishDraft = 'publish_draft',
+  PublishPost = 'publish_post',
   RecommendPublications = 'recommend_publications',
   Signup = 'signup',
   UpdatePost = 'update_post',
