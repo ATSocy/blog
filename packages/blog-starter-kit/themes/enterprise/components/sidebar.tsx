@@ -94,7 +94,7 @@ function PublicationSidebar(props: Props) {
 
 						{hasSocialLinks && (
 							<h2 className="mb-4 text-sm font-semibold uppercase leading-6 text-slate-500 dark:text-slate-400">
-								Blog socials
+								CONNECT WITH US
 							</h2>
 						)}
 						<SocialLinks isSidebar />

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useAppContext } from './contexts/appContext';
 import { GithubSVG, HashnodeSVG, LinkedinSVG, RssSVG, XSVG } from './icons';
+import NostrSVG from './icons/svgs/NostrSVG.js';
 
 export const SocialLinks = ({ isSidebar }: { isSidebar?: boolean }) => {
 	const { publication } = useAppContext();
@@ -64,6 +65,17 @@ export const SocialLinks = ({ isSidebar }: { isSidebar?: boolean }) => {
 
 				<Link
 					prefetch={false}
+					href={`nostr.com`}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Open Nostr profile, opens in new tab"
+					className="flex flex-row items-center justify-center rounded-full border border-slate-200 p-2 hover:bg-slate-100 dark:border-neutral-800 dark:hover:bg-neutral-600"
+				>
+					<NostrSVG className="h-5 w-5 dark:fill-slate-200 fill-neutral-700" />
+				</Link>
+
+				{/* <Link
+					prefetch={false}
 					href={`/rss.xml`}
 					target="_blank"
 					rel="noopener noreferrer"
@@ -71,7 +83,7 @@ export const SocialLinks = ({ isSidebar }: { isSidebar?: boolean }) => {
 					className="flex flex-row items-center justify-center rounded-full border border-slate-200 p-2 hover:bg-slate-100 dark:border-neutral-800 dark:hover:bg-neutral-600"
 				>
 					<RssSVG className="h-5 w-5 stroke-current" />
-				</Link>
+				</Link> */}
 			</div>
 		</>
 	);

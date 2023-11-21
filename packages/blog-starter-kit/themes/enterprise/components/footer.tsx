@@ -98,7 +98,7 @@ export const Footer = () => {
 								</li>
 							</ul>
 						</div>
-						<div className="grid dark:text-slate-200 text-center items-center gap-2 lg:gap-0 justify-center lg:col-span-2">
+						<div className="grid dark:text-slate-200 text-center items-center gap-2 lg:gap-2 justify-center lg:col-span-2">
 							<div className="flex justify-center">
 								<AtsocyLogoSVG className="dark:fill-neutral-300 fill-black " />
 							</div>
@@ -113,6 +113,9 @@ export const Footer = () => {
 									Terms
 								</a>
 							</p>
+							<div className="flex justify-center">
+							<SocialLinks />
+							</div>
 						</div>
 						
 
