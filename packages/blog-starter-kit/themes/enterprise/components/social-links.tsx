@@ -65,7 +65,7 @@ export const SocialLinks = ({ isSidebar }: { isSidebar?: boolean }) => {
 
 				<Link
 					prefetch={false}
-					href={`nostr.com`}
+					href={`https://nostr.com/nprofile1qqstefhn3k2jdey9s3awpvuthd3vymu4660xvprzrs0s9rwsrcad79cn9kyvn`}
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="Open Nostr profile, opens in new tab"
