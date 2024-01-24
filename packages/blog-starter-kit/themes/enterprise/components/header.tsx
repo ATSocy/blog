@@ -10,6 +10,7 @@ import PublicationSidebar from './sidebar';
 import { Announcement } from './announcement';
 import AtsocySVG from './icons/svgs/AtsocySVG';
 import Link from 'next/link';
+import ThemeToggle from './theme-toggle';
 
 function hasUrl(
 	navbarItem: PublicationNavbarItem,
@@ -80,9 +81,9 @@ export const Header = () => {
 	);
 
 	return (
-<header className="border-b bg-zinc-100 py-2 dark:border-zinc-800 dark:bg-stone-950">
+<header className="border-b border-neutral-200 bg-zinc-100 py-2 dark:border-zinc-900 dark:bg-stone-950">
     <Container className="flex">
-        <div className="flex items-center w-full px-4 mr-10">
+        <div className="flex items-center w-full px-2">
             <div className="mr-2">
                 <Button
                     type="outline"
@@ -96,14 +97,20 @@ export const Header = () => {
                     <PublicationSidebar navbarItems={navbarItems} toggleSidebar={toggleSidebar} />
                 )}
             </div>
-			<div className="min-h-[20px] w-full">
+			<div className="flex-grow grid grid-cols-3 items-center">
+			<div></div>
 			<Link
 				href={'/'}
-				aria-label={`${publication.title} home page`}>
+				aria-label={`${publication.title} home page`}
+				className="justify-self-center">
 							
-            <AtsocySVG className="dark:fill-neutral-300 fill-black h-[20px] min-h-[20px] w-full" />
-			
+            <AtsocySVG className="dark:fill-neutral-300 mr-10 fill-black h-[20px] min-h-[20px]" />
 			</Link>
+			<div className="justify-self-end">
+			<ThemeToggle />
+			</div>
+			
+			
 			</div>
         </div>
 				

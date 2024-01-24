@@ -18,6 +18,10 @@ import {
 	SeriesPostsByPublicationQueryVariables,
 } from '../../generated/graphql';
 import { DEFAULT_COVER } from '../../utils/const';
+import KnowYourAlienSVG from '../../components/icons/svgs/KnowYourAlienSVG';
+import { KnowYourAlienAvatars } from '../../components/kya';
+
+const GQL_ENDPOINT = process.env.NEXT_PUBLIC_HASHNODE_GQL_ENDPOINT;
 
 type Props = {
 	series: SeriesFragment;
@@ -27,7 +31,7 @@ type Props = {
 
 export default function Post({ series, publication, posts }: Props) {
 	const title = `${series.name} - ${publication.title}`;
-
+	
 	return (
 		<AppProvider publication={publication}>
 			<Layout>
@@ -36,11 +40,11 @@ export default function Post({ series, publication, posts }: Props) {
 				</Head>
 				<Header />
 				<Container className="flex flex-col items-stretch gap-10 px-5 pb-10">
-					<div
-						className={`${
-							series.coverImage ? 'col-span-full' : 'col-span-3'
-						} grid grid-cols-4 pt-5 md:gap-5`}
-					>
+					<div className="mt-10 grid grid-cols-1 gap-6">
+						<KnowYourAlienSVG className="dark:fill-white"/>
+						<KnowYourAlienAvatars context="series" posts={posts}/>
+					</div>
+					<div className={`${	series.coverImage ? 'col-span-full' : 'col-span-3' } grid grid-cols-4 pt-5 md:gap-5`}>
 						<div className="col-span-full flex flex-col gap-1 md:col-span-2 lg:col-span-3">
 							<p className="font-bold uppercase text-slate-500 dark:text-neutral-400">Series</p>
 							<h1 className="text-4xl font-bold text-slate-900 dark:text-neutral-50">
@@ -49,9 +53,10 @@ export default function Post({ series, publication, posts }: Props) {
 							<div
 								className="hashnode-content-style"
 								dangerouslySetInnerHTML={{ __html: series.description?.html ?? '' }}
-							></div>
+							>
+							</div>
 						</div>
-						<div className="relative col-span-full md:col-span-2 lg:col-span-1">
+						<div className="col-span-full md:col-span-2 lg:col-span-1">
 							<CoverImage
 								title={series.name}
 								src={resizeImage(
@@ -69,7 +74,7 @@ export default function Post({ series, publication, posts }: Props) {
 					{posts.length > 0 ? (
 						<MorePosts context="series" posts={posts} />
 					) : (
-						<div>No Posts found</div>
+						<div className="dark:text-white">No Posts found</div>
 					)}
 				</Container>
 				<Footer />
@@ -105,6 +110,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
 	}
 	const posts = publication.series ? publication.series.posts.edges.map((edge) => edge.node) : [];
 
+
 	return {
 		props: {
 			series,
@@ -121,3 +127,4 @@ export const getStaticPaths: GetStaticPaths = () => {
 		fallback: 'blocking',
 	};
 };
+

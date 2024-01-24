@@ -27,9 +27,17 @@ import {
 	PostsByPublicationQuery,
 	PostsByPublicationQueryVariables,
 	PublicationFragment,
+	SeriesFragment,
+	SeriesPostsByPublicationDocument,
+	SeriesPostsByPublicationQuery,
+	SeriesPostsByPublicationQueryVariables
 } from '../generated/graphql';
 import { DEFAULT_COVER } from '../utils/const';
 import { Announcement } from '../components/announcement';
+import React, { CSSProperties } from 'react';
+import KnowYourAlienSVG from '../components/icons/svgs/KnowYourAlienSVG';
+import Link from 'next/link';
+import { KnowYourAlienAvatars } from '../components/kya';
 
 const SubscribeForm = dynamic(() =>
 	import('../components/subscribe-form').then((mod) => mod.SubscribeForm),
@@ -38,12 +46,14 @@ const SubscribeForm = dynamic(() =>
 const GQL_ENDPOINT = process.env.NEXT_PUBLIC_HASHNODE_GQL_ENDPOINT;
 
 type Props = {
-	publication: PublicationFragment;
+	series: SeriesFragment;
+	posts: PostFragment[];
 	initialAllPosts: PostFragment[];
 	initialPageInfo: PageInfo;
+	publication: PublicationFragment;
 };
 
-export default function Index({ publication, initialAllPosts, initialPageInfo }: Props) {
+export default function Index({ publication, initialAllPosts, initialPageInfo, posts, series }: Props) {
 	const [allPosts, setAllPosts] = useState<PostFragment[]>(initialAllPosts);
 	const [pageInfo, setPageInfo] = useState<Props['initialPageInfo']>(initialPageInfo);
 	const [loadedMore, setLoadedMore] = useState(false);
@@ -81,6 +91,12 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 		);
 	});
 	const morePosts = allPosts.slice(4);
+
+	const scrollingTextStyle: CSSProperties = {
+		animation: "scrollingText 35s linear infinite",
+		whiteSpace: "nowrap",
+	};
+	
 
 	return (
 		<AppProvider publication={publication}>
@@ -123,9 +139,49 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 				</Head>
 				<Header />
 				<Announcement />
+				
+				
 				<Container className="flex flex-col items-stretch gap-10 px-4 mt-10 lg:px-3 pb-10">
 					{/* <Navbar /> */}
-					
+					{/* <KnowYourAlienHeadline series={series}/> */}
+
+					<div className="">
+						<KnowYourAlienSVG className="dark:fill-white"/>
+						<div className="overflow-hidden w-full lg:my-6 my-3 py-3 lg:py-6">
+							<div style={scrollingTextStyle} className="inline-block dark:text-white pl-[50%] text-lg lg:text-5xl py-2">
+								<p>Jan  24, 2024 - <span className="font-semibold">Stark of Zenon</span> \\ <span className="font-bold">Zenon Core</span> — Feb 1, 2024 - ????? \\ <span className="font-bold">HyperCore One</span> — Feb 12, 2024 - ????? \\ <span className="font-bold">Zitadel Logz</span>
+								</p>
+							</div>
+						</div>
+						<div className="grid grid-cols-1 lg:grid-cols-2 place-items-center gap-6 border-l border-r border-l-neutral-200 border-r-neutral-200 dark:border-l-neutral-800 dark:border-r-neutral-800 px-4">
+							
+							<div className="max-w-md">
+								<div className="flex gap-1 dark:text-neutral-100">	
+									<p>Series</p><span className="bg-black dark:bg-fuxia rounded text-white text-[9px] px-1.5 py-1 mt-0.5 mb-1 font-semibold">NEW</span>
+								</div>
+								<div className="flex flex-col">
+									<Link href={`/series/${series.slug}`} passHref>
+										<h1 className="text-xl font-bold pb-3 hover:text-fuxia dark:hover:text-lime dark:text-white">{series.name}</h1>
+									</Link>
+									<p className="text-zinc-600 dark:text-zinc-400" dangerouslySetInnerHTML={{ __html: series.description?.html ?? '' }}>
+									</p>
+									<div className="group lg:flex hidden text-xl font-bold mt-4 hover:cursor-pointer">
+										<Link href={`/series/${series.slug}`} passHref>
+										<span className="border-b-2 dark:border-zinc-500 dark:group-hover:border-lime group-hover:border-fuxia dark:text-white transition-all duration-300">
+										Read Interviews &rarr;
+										</span>
+										</Link>
+										
+									</div>
+								</div>
+							</div>
+							
+							<div className="grid grid-cols-1 place-content-stretch place-items-center">
+								<KnowYourAlienAvatars context="series" posts={posts} />
+							</div>	
+			
+						</div>
+					</div>	
 
 					{allPosts.length === 0 && (
 						<div className="grid grid-cols-1 py-20 lg:grid-cols-3">
@@ -154,19 +210,17 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 						</div>
 						<div className="col-span-1 flex flex-col gap-6">{secondaryPosts}</div>
 					</div>
-
+								
 					{allPosts.length > 0 && (
-  <div className="bg-zinc-700 bg-opacity-5 border border-space border-opacity-10 md:flex md:flex-row  justify-center rounded-lg lg:px-10 lg:py-10 py-5 px-5 dark:border-zinc-500 dark:border-opacity-20  dark:bg-opacity-40 items-stretch md:px-5 sm:px-3 flex-col gap-3">
-   
-      <h2 className="text-zinc-900 dark:text-zinc-100 flex md:text-lg lg:text-xl xl:text-5xl justify-center items-center grow font-semibold" style={{ flexGrow: 1 }}>
-        Keep up with the Alien Trap Society!
-      </h2>
-      <div className="flex grow items-center  justify-center" style={{ flexGrow: 2 }}>
-        <SubscribeForm />
-      </div>
-    </div>
-
-)}
+					<div className="bg-zinc-700 bg-opacity-5 border border-space border-opacity-10 md:flex md:flex-row  justify-center rounded-lg lg:px-10 lg:py-10 py-5 px-5 dark:border-zinc-500 dark:border-opacity-20  dark:bg-opacity-40 items-stretch md:px-5 sm:px-3 flex-col gap-3">
+						<h2 className="text-zinc-900 dark:text-zinc-100 flex md:text-lg lg:text-xl xl:text-5xl justify-center items-center grow font-semibold" style={{ flexGrow: 1 }}>
+       					 Keep up with the Alien Trap Society!
+     					</h2>
+      					<div className="flex grow items-center  justify-center" style={{ flexGrow: 2 }}>
+					        <SubscribeForm />
+      					</div>
+    				</div>
+					)}
 
 					{morePosts.length > 0 && (
 						<>
@@ -193,8 +247,76 @@ export default function Index({ publication, initialAllPosts, initialPageInfo }:
 	);
 }
 
+// export const getStaticProps: GetStaticProps<Props> = async () => {
+	// const data = await request<PostsByPublicationQuery, PostsByPublicationQueryVariables>(
+	// 	GQL_ENDPOINT,
+	// 	PostsByPublicationDocument,
+	// 	{
+	// 		first: 10,
+	// 		host: process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_HOST,
+	// 	},
+	// );
+
+	// const publication = data.publication;
+	// if (!publication) {
+	// 	return {
+	// 		notFound: true,
+	// 	};
+	// }
+	// const initialAllPosts = publication.posts.edges.map((edge) => edge.node);
+
+	// const seriesResponse = await request<SeriesPostsByPublicationQuery, SeriesPostsByPublicationQueryVariables>(
+	// 	GQL_ENDPOINT,
+	// 	SeriesPostsByPublicationDocument,
+	// 	{
+	// 		host: process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_HOST,
+	// 		seriesSlug: 'know-your-alien',
+	// 		first: 10,
+	// 	},
+	// );
+
+
+
+	// const series = seriesResponse.publication?.series;
+
+	
+
+	// return {
+	// 	props: {
+	// 		publication,
+	// 		initialAllPosts,
+	// 		initialPageInfo: publication.posts.pageInfo,
+	// 		// series,			
+	// 	},
+	// 	revalidate: 1,
+	// };
+// };
+
+
+
 export const getStaticProps: GetStaticProps<Props> = async () => {
-	const data = await request<PostsByPublicationQuery, PostsByPublicationQueryVariables>(
+
+
+	const seriesData = await request<SeriesPostsByPublicationQuery, SeriesPostsByPublicationQueryVariables>(
+		process.env.NEXT_PUBLIC_HASHNODE_GQL_ENDPOINT,
+		SeriesPostsByPublicationDocument,
+		{
+			host: process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_HOST,
+			first: 20,
+			seriesSlug: 'know-your-alien'
+		},
+	);
+
+	const seriesPublication = seriesData.publication;
+	const series = seriesPublication?.series;
+	if (!seriesPublication || !series) {
+		return {
+			notFound: true,
+		};
+	}
+	const posts = seriesPublication.series ? seriesPublication.series.posts.edges.map((edge) => edge.node) : [];
+
+	const postsData = await request<PostsByPublicationQuery, PostsByPublicationQueryVariables>(
 		GQL_ENDPOINT,
 		PostsByPublicationDocument,
 		{
@@ -203,7 +325,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 		},
 	);
 
-	const publication = data.publication;
+		const publication = postsData.publication;
 	if (!publication) {
 		return {
 			notFound: true,
@@ -211,12 +333,23 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 	}
 	const initialAllPosts = publication.posts.edges.map((edge) => edge.node);
 
+	
 	return {
 		props: {
 			publication,
 			initialAllPosts,
 			initialPageInfo: publication.posts.pageInfo,
+			series,
+			posts,		
 		},
 		revalidate: 1,
 	};
+	// return {
+	// 	props: {
+	// 		series,
+	// 		posts,
+	// 		publication,
+	// 	},
+	// 	revalidate: 1,
+	// };
 };
