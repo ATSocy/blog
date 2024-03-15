@@ -13,7 +13,32 @@ export const KnowYourAlienAvatars = ( { posts, context }: Props) => {
 		<div className="w-full">
 			<div className="relative group">
 		  		<div className="flex overflow-hidden space-x-4">
-				    <Link href={`/${posts[0].slug}`}>
+				  
+					<Link href={`/${posts[0].slug}`}>
+						<div className="flex-shrink-0 p-1 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
+							<div>
+								<span className="rounded-md px-1 py-2 flex items-center justify-center text-neutral-500 text-xs">
+									Contributor
+								</span>
+							</div>
+							<div className="w-20 h-20 mx-auto relative">
+								<Image
+									alt="Profile picture of Sugoi"
+									className="rounded-full border-2 border-lime transition duration-300 ease-in-out transform group-hover:shadow"
+									height="96"
+									src="/assets/blog/kya/sugoi.jpg"
+									style={{
+										aspectRatio: "96/96",
+										objectFit: "cover",
+									}}
+									width="96"
+								/>
+							</div>
+							<p className="text-center mt-2 dark:text-white font-semibold">Sugoi</p>
+							<p className="text-center mt-1 text-sm text-gray-500">Zitadel Logz</p>
+						</div>
+					</Link>
+				    <Link href={`/${posts[1].slug}`}>
 						<div className="flex-shrink-0 p-1 transition duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
 							<div>
 								<span className="rounded-md px-1 py-2 flex items-center justify-center text-neutral-500 text-xs">
@@ -36,7 +61,7 @@ export const KnowYourAlienAvatars = ( { posts, context }: Props) => {
 							<p className="text-center mt-2 dark:text-white font-semibold">Stark of Zenon</p>
 							<p className="text-center mt-1 text-sm text-gray-500">Zenon Core</p>
 						</div>
-					</Link>
+					</Link>					
 			  {/* <div className="w-20 h-20 mx-auto relative  ">
 				<img
 				  alt="a hooded sloth profile picture"
