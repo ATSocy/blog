@@ -149,7 +149,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo, p
 						<KnowYourAlienSVG className="dark:fill-white"/>
 						<div className="overflow-hidden w-full lg:my-6 my-3 py-3 lg:py-6">
 							<div style={scrollingTextStyle} className="inline-block dark:text-white pl-[50%] text-lg lg:text-5xl py-2">
-								<p>Jan  24, 2024 - <span className="font-semibold">Stark of Zenon</span> \\ <span className="font-bold">Zenon Core</span> — March 15, 2024 - Sugoi \\ <span className="font-bold">Zitadel Logz</span> — March 29, 2024 - ????? \\ <span className="font-bold">Zitadel Logz</span>
+								<p>Jan  24, 2024 - <span className="font-semibold">Stark of Zenon</span> \\ <span className="font-bold">Zenon Core</span> — March 15, 2024 - Sugoi \\ <span className="font-bold">Zitadel Logz</span> — March 29, 2024 - ????? \\ <span className="font-bold">HyperCore One</span>
 								</p>
 							</div>
 						</div>
