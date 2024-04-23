@@ -153,7 +153,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo, p
 								</p>
 							</div>
 						</div>
-						<div className="grid grid-cols-1 lg:grid-cols-2 w-full place-items-center gap-6 border-l border-r border-l-neutral-200 border-r-neutral-200 dark:border-l-neutral-800 dark:border-r-neutral-800 px-4">
+						<div className="grid grid-cols-1 lg:grid-cols-2 place-items-center gap-6 border-l border-r border-l-neutral-200 border-r-neutral-200 dark:border-l-neutral-800 dark:border-r-neutral-800 px-4">
 							
 							<div className="max-w-md">
 								<div className="flex gap-1 dark:text-neutral-100">	
