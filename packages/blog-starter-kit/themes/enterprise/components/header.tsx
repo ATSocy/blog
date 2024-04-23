@@ -84,7 +84,7 @@ export const Header = () => {
 <header className="border-b border-neutral-200 bg-zinc-100 py-2 dark:border-zinc-900 dark:bg-stone-950">
     <Container className="flex">
         <div className="flex items-center w-full px-2">
-            <div className="mr-2">
+            {/* <div className="mr-2">
                 <Button
                     type="outline"
                     label=""
@@ -96,7 +96,7 @@ export const Header = () => {
                 {isSidebarVisible && (
                     <PublicationSidebar navbarItems={navbarItems} toggleSidebar={toggleSidebar} />
                 )}
-            </div>
+            </div> */}
 			<div className="flex-grow grid grid-cols-3 items-center">
 			<div></div>
 			<Link

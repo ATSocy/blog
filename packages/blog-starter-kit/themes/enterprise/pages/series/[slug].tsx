@@ -44,19 +44,19 @@ export default function Post({ series, publication, posts }: Props) {
 						<KnowYourAlienSVG className="dark:fill-white"/>
 						<KnowYourAlienAvatars context="series" posts={posts}/>
 					</div>
-					<div className={`${	series.coverImage ? 'col-span-full' : 'col-span-3' } grid grid-cols-4 pt-5 md:gap-5`}>
-						<div className="col-span-full flex flex-col gap-1 md:col-span-2 lg:col-span-3">
-							<p className="font-bold uppercase text-slate-500 dark:text-neutral-400">Series</p>
-							<h1 className="text-4xl font-bold text-slate-900 dark:text-neutral-50">
+					<div className={`${	series.coverImage ? 'col-span-full' : 'col-span-3' } grid grid-cols-4 mb-12 text-center md:gap-5`}>
+						<div className="col-span-full flex items-center flex-col gap-1 ">
+							<p className="font-bold uppercase text-neutral-500 dark:text-neutral-400">Series</p>
+							<h1 className="text-4xl font-bold text-neutral-900 dark:text-neutral-50">
 								{series.name}
 							</h1>
 							<div
-								className="hashnode-content-style"
+								className="text-neutral-600 dark:text-neutral-500 text-lg max-w-2xl"
 								dangerouslySetInnerHTML={{ __html: series.description?.html ?? '' }}
 							>
 							</div>
 						</div>
-						<div className="col-span-full md:col-span-2 lg:col-span-1">
+						{/* <div className="col-span-full md:col-span-2 lg:col-span-1">
 							<CoverImage
 								title={series.name}
 								src={resizeImage(
@@ -69,7 +69,7 @@ export default function Post({ series, publication, posts }: Props) {
 									DEFAULT_COVER,
 								)}
 							/>
-						</div>
+						</div> */}
 					</div>
 					{posts.length > 0 ? (
 						<MorePosts context="series" posts={posts} />
