@@ -20,7 +20,7 @@ export const PostPreview = ({ title, coverImage, date, excerpt, slug }: Props) =
 	const postURL = `/${slug}`;
 
 	return (
-		<div className="grid grid-cols-1 gap-5">
+		<div className="grid grid-cols-1 border-l border-r px-5 rounded-md gap-5">
 			<div className="col-span-1">
 				<CoverImage
 					slug={slug}
@@ -29,7 +29,7 @@ export const PostPreview = ({ title, coverImage, date, excerpt, slug }: Props) =
 				/>
 			</div>
 			<div className="col-span-1 flex flex-col gap-2">
-				<h1 className="text-lg font-semibold leading-tight text-slate-800 dark:text-neutral-50">
+				<h1 className="text-lg font-semibold leading-tight text-neutral-800 dark:text-neutral-50">
 					<Link
 						href={postURL}
 						className="hover:text-fuxia dark:hover:text-lime hover:underline"
@@ -38,11 +38,11 @@ export const PostPreview = ({ title, coverImage, date, excerpt, slug }: Props) =
 					</Link>
 				</h1>
 				<Link href={postURL}>
-					<p className="text-md leading-snug text-slate-500 dark:text-neutral-400">
+					<p className="text-md leading-snug text-neutral-500 dark:text-neutral-400">
 						{excerpt.length > 140 ? excerpt.substring(0, 140) + '…' : excerpt}
 					</p>
 				</Link>
-				<div className="text-sm font-semibold text-slate-500 dark:text-neutral-300">
+				<div className="text-sm font-semibold text-neutral-500 dark:text-neutral-300">
 					<Link href={postURL}>
 						<DateFormatter dateString={date} />
 					</Link>

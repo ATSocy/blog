@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useAppContext } from './contexts/appContext';
 import { GithubSVG, HashnodeSVG, LinkedinSVG, RssSVG, XSVG } from './icons';
 import NostrSVG from './icons/svgs/NostrSVG.js';
+import { Separator } from './ui/separator';
 
 export const SocialLinks = ({ isSidebar }: { isSidebar?: boolean }) => {
 	const { publication } = useAppContext();
@@ -62,7 +63,7 @@ export const SocialLinks = ({ isSidebar }: { isSidebar?: boolean }) => {
 						)}
 					</>
 				)}
-
+				
 				<Link
 					prefetch={false}
 					href={`https://nostr.com/nprofile1qqstefhn3k2jdey9s3awpvuthd3vymu4660xvprzrs0s9rwsrcad79cn9kyvn`}

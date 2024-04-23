@@ -149,11 +149,11 @@ export default function Index({ publication, initialAllPosts, initialPageInfo, p
 						<KnowYourAlienSVG className="dark:fill-white"/>
 						<div className="overflow-hidden w-full lg:my-6 my-3 py-3 lg:py-6">
 							<div style={scrollingTextStyle} className="inline-block dark:text-white pl-[50%] text-lg lg:text-5xl py-2">
-								<p>Jan  24, 2024 - <span className="font-semibold">Stark of Zenon</span> \\ <span className="font-bold">Zenon Core</span> — March 15, 2024 - Sugoi \\ <span className="font-bold">Zitadel Logz</span> — March 29, 2024 - ????? \\ <span className="font-bold">HyperCore One</span>
+								<p>Jan  24, 2024 - <span className="font-semibold">Stark of Zenon</span> \\ <span className="font-bold">Zenon Core</span> — March 15, 2024 - <span className="font-semibold">Sugoi</span> \\ <span className="font-bold">Zitadel Logz</span> — April 30, 2024 - <span className="font-semibold">?????</span> \\ <span className="font-bold">HyperCore One</span>
 								</p>
 							</div>
 						</div>
-						<div className="grid grid-cols-1 lg:grid-cols-2 place-items-center gap-6 border-l border-r border-l-neutral-200 border-r-neutral-200 dark:border-l-neutral-800 dark:border-r-neutral-800 px-4">
+						<div className="grid grid-cols-1 lg:grid-cols-2 w-full place-items-center gap-6 border-l border-r border-l-neutral-200 border-r-neutral-200 dark:border-l-neutral-800 dark:border-r-neutral-800 px-4">
 							
 							<div className="max-w-md">
 								<div className="flex gap-1 dark:text-neutral-100">	
@@ -196,7 +196,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo, p
 						</div>
 					)}
 
-					<div className="grid items-start gap-6 xl:grid-cols-2">
+					<div className="grid items-center py-10 gap-4 xl:grid-cols-2">
 						<div className="col-span-1">
 							{firstPost && (
 								<HeroPost
@@ -208,10 +208,10 @@ export default function Index({ publication, initialAllPosts, initialPageInfo, p
 								/>
 							)}
 						</div>
-						<div className="col-span-1 flex flex-col gap-6">{secondaryPosts}</div>
+						<div className="col-span-1 flex p-4 flex-col gap-6">{secondaryPosts}</div>
 					</div>
 								
-					{allPosts.length > 0 && (
+					{allPosts.length > 6 && (
 					<div className="bg-zinc-700 bg-opacity-5 border border-space border-opacity-10 md:flex md:flex-row  justify-center rounded-lg lg:px-10 lg:py-10 py-5 px-5 dark:border-zinc-500 dark:border-opacity-20  dark:bg-opacity-40 items-stretch md:px-5 sm:px-3 flex-col gap-3">
 						<h2 className="text-zinc-900 dark:text-zinc-100 flex md:text-lg lg:text-xl xl:text-5xl justify-center items-center grow font-semibold" style={{ flexGrow: 1 }}>
        					 Keep up with the Alien Trap Society!
@@ -246,52 +246,6 @@ export default function Index({ publication, initialAllPosts, initialPageInfo, p
 		</AppProvider>
 	);
 }
-
-// export const getStaticProps: GetStaticProps<Props> = async () => {
-	// const data = await request<PostsByPublicationQuery, PostsByPublicationQueryVariables>(
-	// 	GQL_ENDPOINT,
-	// 	PostsByPublicationDocument,
-	// 	{
-	// 		first: 10,
-	// 		host: process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_HOST,
-	// 	},
-	// );
-
-	// const publication = data.publication;
-	// if (!publication) {
-	// 	return {
-	// 		notFound: true,
-	// 	};
-	// }
-	// const initialAllPosts = publication.posts.edges.map((edge) => edge.node);
-
-	// const seriesResponse = await request<SeriesPostsByPublicationQuery, SeriesPostsByPublicationQueryVariables>(
-	// 	GQL_ENDPOINT,
-	// 	SeriesPostsByPublicationDocument,
-	// 	{
-	// 		host: process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_HOST,
-	// 		seriesSlug: 'know-your-alien',
-	// 		first: 10,
-	// 	},
-	// );
-
-
-
-	// const series = seriesResponse.publication?.series;
-
-	
-
-	// return {
-	// 	props: {
-	// 		publication,
-	// 		initialAllPosts,
-	// 		initialPageInfo: publication.posts.pageInfo,
-	// 		// series,			
-	// 	},
-	// 	revalidate: 1,
-	// };
-// };
-
 
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
@@ -344,12 +298,4 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 		},
 		revalidate: 1,
 	};
-	// return {
-	// 	props: {
-	// 		series,
-	// 		posts,
-	// 		publication,
-	// 	},
-	// 	revalidate: 1,
-	// };
 };
