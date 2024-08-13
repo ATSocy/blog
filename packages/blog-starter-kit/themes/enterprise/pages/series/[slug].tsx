@@ -39,7 +39,7 @@ export default function Post({ series, publication, posts }: Props) {
 					<title>{title}</title>
 				</Head>
 				<Header />
-				<Container className="flex flex-col items-stretch gap-10 px-5 pb-10">
+				<Container className="flex flex-col items-stretch gap-10 pb-10">
 					<div className="mt-10 grid grid-cols-1 gap-6">
 						<KnowYourAlienSVG className="dark:fill-white"/>
 						<KnowYourAlienAvatars context="series" posts={posts}/>

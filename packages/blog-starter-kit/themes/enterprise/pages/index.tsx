@@ -38,6 +38,7 @@ import React, { CSSProperties } from 'react';
 import KnowYourAlienSVG from '../components/icons/svgs/KnowYourAlienSVG';
 import Link from 'next/link';
 import { KnowYourAlienAvatars } from '../components/kya';
+import { HeroScroll } from '../components/hero-scroll';
 
 const SubscribeForm = dynamic(() =>
 	import('../components/subscribe-form').then((mod) => mod.SubscribeForm),
@@ -138,18 +139,19 @@ export default function Index({ publication, initialAllPosts, initialPageInfo, p
 					/>
 				</Head>
 				<Header />
-				<Announcement />
+				{/* <Announcement /> */}
 				
 				
-				<Container className="flex flex-col items-stretch gap-10 px-4 mt-10 lg:px-3 pb-10">
+				<Container className="flex flex-col items-stretch gap-10 w-full mt-10 pb-10 px-1">
 					{/* <Navbar /> */}
 					{/* <KnowYourAlienHeadline series={series}/> */}
 
 					<div className="">
+				
 						<KnowYourAlienSVG className="dark:fill-white"/>
 						<div className="overflow-hidden w-full lg:my-6 my-3 py-3 lg:py-6">
 							<div style={scrollingTextStyle} className="inline-block dark:text-white pl-[50%] text-lg lg:text-5xl py-2">
-								<p>Jan  24, 2024 - <span className="font-semibold">Stark of Zenon</span> \\ <span className="font-bold">Zenon Core</span> — March 15, 2024 - <span className="font-semibold">Sugoi</span> \\ <span className="font-bold">Zitadel Logz</span> — April 30, 2024 - <span className="font-semibold">?????</span> \\ <span className="font-bold">HyperCore One</span>
+								<p>Jan  24, 2024 - <span className="font-semibold">Stark of Zenon</span> \\ <span className="font-bold">Zenon Core</span> — March 15, 2024 - <span className="font-semibold">Sugoi</span> \\ <span className="font-bold">Zitadel Logz</span> — TBD, 2024 - <span className="font-semibold">?????</span> \\ <span className="font-bold">HyperCore One</span>
 								</p>
 							</div>
 						</div>
@@ -179,10 +181,10 @@ export default function Index({ publication, initialAllPosts, initialPageInfo, p
 							<div className="grid grid-cols-1 place-content-stretch place-items-center">
 								<KnowYourAlienAvatars context="series" posts={posts} />
 							</div>	
-			
+						
 						</div>
 					</div>	
-
+					<HeroScroll />
 					{allPosts.length === 0 && (
 						<div className="grid grid-cols-1 py-20 lg:grid-cols-3">
 							<div className="col-span-1 flex flex-col items-center gap-5 text-center text-slate-700 dark:text-neutral-400 lg:col-start-2">
@@ -208,7 +210,7 @@ export default function Index({ publication, initialAllPosts, initialPageInfo, p
 								/>
 							)}
 						</div>
-						<div className="col-span-1 flex p-4 flex-col gap-6">{secondaryPosts}</div>
+						<div className="col-span-1 flex flex-col gap-6">{secondaryPosts}</div>
 					</div>
 								
 					{allPosts.length > 6 && (

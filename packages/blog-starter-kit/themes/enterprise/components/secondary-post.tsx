@@ -16,7 +16,7 @@ export const SecondaryPost = ({ title, coverImage, date, excerpt, slug }: Props)
 	const postURL = `/${slug}`;
 
 	return (
-		<section className="grid items-start gap-5 border-l border-r border-neutral-200 dark:border-neutral-800 rounded-md px-5 md:grid-cols-2">
+		<section className="grid items-start gap-5 border-l border-r border-neutral-200 dark:border-neutral-800 px-4 md:grid-cols-2">
 			<div className="col-span-1">
 				<CoverImage
 					title={title}

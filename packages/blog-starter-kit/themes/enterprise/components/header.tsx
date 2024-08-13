@@ -81,9 +81,9 @@ export const Header = () => {
 	);
 
 	return (
-<header className="border-b border-neutral-200 bg-zinc-100 py-2 dark:border-zinc-900 dark:bg-stone-950">
-    <Container className="flex">
-        <div className="flex items-center w-full px-2">
+<header className="border-b  border-neutral-200 bg-zinc-100 py-2 dark:border-zinc-900 dark:bg-stone-950">
+    <Container className="flex px-1 ">
+        <div className="flex items-center w-full">
             {/* <div className="mr-2">
                 <Button
                     type="outline"
@@ -97,14 +97,14 @@ export const Header = () => {
                     <PublicationSidebar navbarItems={navbarItems} toggleSidebar={toggleSidebar} />
                 )}
             </div> */}
-			<div className="flex-grow grid grid-cols-3 items-center">
+			<div className="flex-grow grid grid-cols-3 items-center w-full">
 			<div></div>
 			<Link
 				href={'/'}
 				aria-label={`${publication.title} home page`}
 				className="justify-self-center">
 							
-            <AtsocySVG className="dark:fill-neutral-300 mr-10 fill-black h-[20px] min-h-[20px]" />
+            <AtsocySVG className="dark:fill-neutral-300 fill-black h-[20px] min-h-[20px]" />
 			</Link>
 			<div className="justify-self-end">
 			<ThemeToggle />
