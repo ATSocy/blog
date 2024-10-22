@@ -99,6 +99,7 @@ module.exports = {
 					  'border-radius': '0.5rem',
 					  margin: '1rem 0',
 					  'word-break': 'break-word',
+					  '@apply dark:bg-zinc-900 dark:border-zinc-800': {},
 					},
 					'div[data-node-type="callout-emoji"]': {
 					  background: '#E2E8F0',
@@ -111,9 +112,17 @@ module.exports = {
 					  'justify-content': 'center',
 					  'align-items': 'center',
 					  'font-size': '1rem',
+					  '@apply dark:bg-zinc-800': {},  // Dark mode styles
 					}
 				  },
-				}
+				},
+				dark: {
+					css: {
+						'div[data-node-type="callout"]': {
+							color: colors.gray[200],  // Text color in dark mode
+						},
+					},
+				},
 			}),
 			spacing: {
 				28: '7rem',
